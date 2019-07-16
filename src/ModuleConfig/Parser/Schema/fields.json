@@ -108,6 +108,12 @@
                     "description": "Define Upload Adapter for FileStorage plugin",
                     "type": "string",
                     "enum": ["Local", "AwsS3", "Dropbox", "AzureBlobStorage", "GoogleCloudStorage"]
+                },
+                "personal": {
+                    "title": "Personal Identifiable Information (PII)",
+                    "description": "Define PPI (US term), personal data (EU term) and sensitive data (EU term)",
+                    "type": "boolean",
+                    "default": false
                 }
             },
             "additionalProperties": false
