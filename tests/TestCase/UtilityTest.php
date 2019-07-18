@@ -3,13 +3,12 @@ namespace Qobo\Utils\Test\TestCase;
 
 use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
-use InvalidArgumentException;
 use Qobo\Utils\Utility;
 
 class UtilityTest extends TestCase
 {
     public $fixtures = [
-        'plugin.CakeDC/Users.users'
+        'plugin.CakeDC/Users.Users'
     ];
 
     /**
