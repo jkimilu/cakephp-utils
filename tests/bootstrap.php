@@ -115,7 +115,3 @@ Configure::write('Qobo/' . $pluginName . '.encryptionKey', 'wt1U5MACWJFTXGenFoZo
 
 // Alias AppController to the test App
 class_alias('Qobo\\' . $pluginName . '\Test\App\Controller\AppController', 'App\Controller\AppController');
-// If plugin has routes.php/bootstrap.php then load them, otherwise don't.
-$loadPluginRoutes = file_exists(ROOT . DS . 'config' . DS . 'routes.php');
-$loadPluginBootstrap = file_exists(ROOT . DS . 'config' . DS . 'bootstrap.php');
-Cake\Core\Plugin::load('Qobo/' . $pluginName, ['path' => ROOT . DS, 'autoload' => true, 'routes' => $loadPluginRoutes, 'bootstrap' => $loadPluginBootstrap]);

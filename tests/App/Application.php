@@ -14,7 +14,6 @@
  */
 namespace Qobo\Utils\Test\App;
 
-use Cake\Core\Configure;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
 use Cake\Http\BaseApplication;
 use Cake\Routing\Middleware\AssetMiddleware;
@@ -28,6 +27,27 @@ use Cake\Routing\Middleware\RoutingMiddleware;
  */
 class Application extends BaseApplication
 {
+    /**
+     * Load all the application configuration and bootstrap logic.
+     *
+     * @return void
+     */
+
+    public function bootstrap()
+    {
+        parent::bootstrap();
+
+        // If plugin has routes.php/bootstrap.php then load them, otherwise don't.
+        $loadPluginRoutes = file_exists(ROOT . DS . 'config' . DS . 'routes.php');
+        $loadPluginBootstrap = file_exists(ROOT . DS . 'config' . DS . 'bootstrap.php');
+        $this->addPlugin('Qobo/Utils', [
+            'path' => ROOT . DS,
+            'autoload' => true,
+            'routes' => $loadPluginRoutes,
+            'bootstrap' => $loadPluginBootstrap
+        ]);
+    }
+
     /**
      * Setup the middleware queue your application will use.
      *
