@@ -391,7 +391,7 @@ class Utility
         }
 
         $path = implode(DS, [
-            Plugin::path('Qobo/Utils'),
+            dirname(__DIR__),
             'webroot',
             'img',
             'icons',
