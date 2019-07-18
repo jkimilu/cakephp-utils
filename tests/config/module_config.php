@@ -19,6 +19,10 @@ $classTypeParser = (string)ClassType::PARSER();
 
 return [
     'ModuleConfig' => [
+        'schemaPath' => implode(DIRECTORY_SEPARATOR, [
+            dirname(dirname(__DIR__)),
+            'src', 'ModuleConfig', 'Parser', 'Schema'
+        ]),
         'classMapVersion' => 'V3',
         'classMap' => [
             'V3' => [
