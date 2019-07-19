@@ -38,7 +38,7 @@ class Parser implements ConfigInterface, ParserInterface
         'allowEmptySchema' => true,
         'lint' => false,
         'validate' => false,
-        'validationMode' => Constraint::CHECK_MODE_APPLY_DEFAULTS
+        'validationMode' => Constraint::CHECK_MODE_NORMAL
     ];
 
     /**
