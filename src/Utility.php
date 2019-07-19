@@ -50,7 +50,7 @@ class Utility
      * Method that returns all controller names.
      *
      * @param bool $includePlugins Flag for including plugin controllers
-     * @return mixed[]
+     * @return string[]
      */
     public static function getControllers(bool $includePlugins = true): array
     {
@@ -126,7 +126,7 @@ class Utility
      * @param string $path Directory path
      * @param string $plugin Plugin name
      * @param bool $fqcn Flag for using fqcn
-     * @return mixed[]
+     * @return string[]
      */
     public static function getDirControllers(string $path, string $plugin = null, bool $fqcn = true): array
     {

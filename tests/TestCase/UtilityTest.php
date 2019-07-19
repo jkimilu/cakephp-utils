@@ -5,6 +5,7 @@ use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 use InvalidArgumentException;
 use Qobo\Utils\Utility;
+use Webmozart\Assert\Assert;
 
 class UtilityTest extends TestCase
 {
@@ -65,6 +66,7 @@ class UtilityTest extends TestCase
         $this->assertFalse(in_array('UsersController', $result), "Non-fqcn UsersController is in the list (plugin=false,fqcn=true)");
         // Convert fqcn to non-fqcn
         foreach ($result as $key => $item) {
+            Assert::string($item);
             $parts = explode('\\', $item);
             $result[$key] = array_pop($parts);
         };
