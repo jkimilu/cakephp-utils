@@ -22,7 +22,7 @@ class EncryptedFieldsBehaviorTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/utils.users',
+        'plugin.Qobo/Utils.Users',
     ];
 
     /**
