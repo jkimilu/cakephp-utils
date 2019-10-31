@@ -64,4 +64,21 @@ class ListParserTest extends TestCase
         $this->assertTrue(in_array('bar.bar_one', array_keys($resultArray['items'])));
         $this->assertTrue(in_array('bar.bar_two', array_keys($resultArray['items'])));
     }
+
+    public function testTrasiction() : void
+    {
+        $file = $this->dataDir . DS . 'Foo' . DS . 'lists' . DS . 'local_genders.json';
+        $result = $this->parser->parse($file, ['filter' => true, 'flatten' => true, 'transition' => 'baz']);
+
+        $resultArray = Convert::objectToArray($result);
+
+        $this->assertEquals(2, count($resultArray['items']));
+        $this->assertTrue(in_array('baz', array_keys($resultArray['items'])));
+        $this->assertTrue(in_array('f', array_keys($resultArray['items'])));
+
+        $result = $this->parser->parse($file, ['filter' => true, 'flatten' => true, 'transition' => 'f']);
+        $resultArray = Convert::objectToArray($result);
+
+        $this->assertEquals(7, count($resultArray['items']));
+    }
 }

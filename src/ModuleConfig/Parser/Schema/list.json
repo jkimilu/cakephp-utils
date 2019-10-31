@@ -19,6 +19,11 @@
                     "type": "string",
                     "minLength": 1
                 },
+                "transitions": {
+                    "title": "Transitions",
+                    "description": "List of possible value for transitions",
+                    "type": "array"
+                },
                 "inactive": {
                     "title": "Inactive",
                     "description": "Whether or not the item is active",

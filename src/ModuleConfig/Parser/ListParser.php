@@ -11,6 +11,7 @@
  */
 namespace Qobo\Utils\ModuleConfig\Parser;
 
+use Cake\Utility\Hash;
 use JsonSchema\Constraints\Constraint;
 use Qobo\Utils\Utility\Convert;
 
@@ -45,9 +46,13 @@ class ListParser extends Parser
         $result = parent::parse($path, $options);
         $data = Convert::objectToArray($result);
 
-        $data['items'] = $this->normalize($data['items']);
-
         $config = $this->getConfig();
+
+        if (isset($config['transition']) && $config['transition']) {
+            $data['items'] = $this->transition($data['items'], $config['transition']);
+        }
+
+        $data['items'] = $this->normalize($data['items']);
 
         if ($config['filter']) {
             $data['items'] = $this->filter($data['items']);
@@ -137,5 +142,27 @@ class ListParser extends Parser
         }
 
         return $result;
+    }
+
+    /**
+     * Filter the list with the possible values from a parent key
+     *
+     * @param  mixed[] $data  List Array
+     * @param  string $value Current list value
+     * @return mixed[] filter array
+     */
+    protected function transition(array $data, string $value) : array
+    {
+        $list = (Hash::extract($data, '{n}[value=' . $value . '].transitions.{*}'));
+
+        if (empty($list)) {
+            return $data;
+        }
+
+        $list[] = $value;
+
+        return $result = array_filter($data, function ($v) use ($list) {
+            return in_array($v['value'], (array)$list);
+        });
     }
 }
