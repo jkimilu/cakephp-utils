@@ -9,7 +9,7 @@ use Qobo\Utils\Utility\Convert;
 use RuntimeException;
 use Seld\JsonLint\JsonParser;
 use Seld\JsonLint\ParsingException;
-use \stdClass;
+use stdClass;
 
 class SchemaTest extends TestCase
 {
