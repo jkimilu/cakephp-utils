@@ -29,7 +29,7 @@ class SchemaTest extends TestCase
         // All your dir are belong to us!
         $this->schemaPath = implode(DIRECTORY_SEPARATOR, [
             dirname(dirname(dirname(__DIR__))),
-            'data', 'schema'
+            'data', 'schema',
         ]);
     }
 
